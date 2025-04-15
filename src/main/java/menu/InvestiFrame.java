@@ -348,10 +348,12 @@ public class InvestiFrame extends JFrame {
     LocalDate data = LocalDate.of(datiInt[2], datiInt[1], datiInt[0]);
 
     MainFrame.addInvestimento(soldi,guadagno,MainFrame.getContoBanca());
+
     /*
     MainFrame.depositPreleva(2,soldi,MainFrame.getPortafoglio(),MainFrame.getContoBanca());
     MainFrame.depositPreleva(1,guadagno,MainFrame.getPortafoglio(),MainFrame.getContoBanca());
     */
+
     AccessoUtenteMain.addInfo(nome[0],MainFrame.getPortafoglio(),MainFrame.getContoBanca(),data,soldi,guadagno,durataInvestimento);
 
     dispose();
