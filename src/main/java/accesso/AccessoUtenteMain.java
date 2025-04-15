@@ -111,7 +111,7 @@ public class AccessoUtenteMain {
                 + localDate.getYear()
                 + ";"
                 + soldiInvestiti
-                + ","
+                + ";"
                 + guadagno
                 + ";"
                 + durataInvestimento

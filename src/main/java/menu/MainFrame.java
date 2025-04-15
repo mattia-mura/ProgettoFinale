@@ -52,8 +52,7 @@ public class MainFrame extends JFrame {
 
   JLabel logo =
       new JLabel(
-          new ImageIcon(
-              "D:/progettiJava/Menedor2TPSIT/menedor2bank/resource/Logo_MenedorBank.png"));
+          new ImageIcon("/src/main/java/resources/Logo_MenedorBank.png"));
 
   int nMaxInvestimenti = 5;
   int nInvestimenti = 0;
@@ -297,4 +296,11 @@ public class MainFrame extends JFrame {
     }
     return true;
   }
+
+  public static boolean addInvestimento(double soldi, double money, ContoBanca contoBancario) {
+    contoBancario.decrementaSaldo(soldi);
+    contoBancario.aumentaSaldo(money);
+    return true;
+  }//addInvestimento
+
 }

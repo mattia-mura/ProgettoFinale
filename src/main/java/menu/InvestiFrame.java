@@ -4,6 +4,7 @@ import accesso.AccessoFrame;
 import accesso.AccessoUtenteMain;
 import accesso.RoundedButton;
 import classi.Investimenti;
+import classi.Tools;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -313,6 +314,7 @@ public class InvestiFrame extends JFrame {
     soldi = 0.0;
     try {
       soldi = Double.parseDouble(campoImporto.getText());
+      soldi = Tools.cifreDopoVirgola(soldi);
       if (soldi > 0 && soldi < MainFrame.getContoVirtuale()) {
         indirizzoInvestimenti(); // Ora può essere chiamato in sicurezza
         importoInvestimento = soldi;
@@ -321,9 +323,8 @@ public class InvestiFrame extends JFrame {
             "Investimento confermato: " + soldi + "€",
             "Successo",
             JOptionPane.INFORMATION_MESSAGE);
-        guadagno =
-            investimentoo(
-                soldi, probabilitaGuadagno, percentualeMinMaxGuadagno, percentualeMinMaxPerdita);
+        guadagno = investimentoo(soldi, probabilitaGuadagno, percentualeMinMaxGuadagno, percentualeMinMaxPerdita);
+        guadagno = Tools.cifreDopoVirgola(guadagno);
         //MainFrame.depositPreleva(2, soldi, MainFrame.getPortafoglio(), MainFrame.getContoBanca());
         // investimentoo(soldi, probabilitaGuadagno, percentualeMinMaxGuadagno,
         // percentualeMinMaxPerdita);
@@ -346,8 +347,11 @@ public class InvestiFrame extends JFrame {
     int[] datiInt = AccessoUtenteMain.getLastTime(nome[0]);
     LocalDate data = LocalDate.of(datiInt[2], datiInt[1], datiInt[0]);
 
+    MainFrame.addInvestimento(soldi,guadagno,MainFrame.getContoBanca());
+    /*
     MainFrame.depositPreleva(2,soldi,MainFrame.getPortafoglio(),MainFrame.getContoBanca());
     MainFrame.depositPreleva(1,guadagno,MainFrame.getPortafoglio(),MainFrame.getContoBanca());
+    */
     AccessoUtenteMain.addInfo(nome[0],MainFrame.getPortafoglio(),MainFrame.getContoBanca(),data,soldi,guadagno,durataInvestimento);
 
     dispose();
