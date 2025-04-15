@@ -301,6 +301,6 @@ public class MainFrame extends JFrame {
     contoBancario.decrementaSaldo(soldi);
     contoBancario.aumentaSaldo(money);
     return true;
-  }//addInvestimento
+  }//addInvestimentoo
 
 }
